@@ -1,0 +1,35 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html ng-app="customersApp">
+<head lang="en">
+    <meta charset="utf-8">
+    <title>CRUD App using AngularJS</title>
+    <link href="~/Content/css/ng-grid.min.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/js/jquery-1.10.1.min.js"></script>
+    <script src="~/Scripts/js/angular.min.js"></script>
+    <script src="~/Scripts/js/ng-grid.min.js"></script>
+    <script src="~/Scripts/Common/CustomerPagging.js"></script>
+    <script src="~/Scripts/demo.js"></script>
+    <script src="~/Scripts/jquery.nimble.loader.js"></script>
+    <link href="~/Content/css/loader.css" rel="stylesheet" />
+    <script>
+        $(document).ready(function () {
+            $('a.listcust').addClass('active');
+        })
+    </script>
+
+</head>
+<body ng-controller="customerCtrl">
+    <div class="container ">
+        <div class="row">
+            @Html.Partial("_PartailMenu")
+            <div class="clear">&nbsp;</div>
+            <div class="gridStyle table-responsive table table table-striped" ng-grid="gridOptions"></div>
+        </div>
+    </div>
+</body>
+</html>

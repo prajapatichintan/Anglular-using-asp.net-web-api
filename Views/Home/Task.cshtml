@@ -1,0 +1,78 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html ng-app="CustomerTask">
+<head lang="en">
+    <meta charset="utf-8">
+    <title>CRUD App using AngularJS</title>
+
+    <link href="~/Content/css/ng-grid.min.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/js/jquery-1.10.1.min.js"></script>
+    <script src="~/Scripts/js/angular.min.js"></script>
+    <script src="~/Scripts/js/ng-grid.min.js"></script>
+    <script src="~/Scripts/Common/CustomerTask.js"></script>
+    <script src="~/Scripts/demo.js"></script>
+    <script src="~/Scripts/jquery.nimble.loader.js"></script>
+    <link href="~/Content/css/loader.css" rel="stylesheet" />
+    <script>
+        $(document).ready(function () {
+            $('a.todo').addClass('active');
+        });
+    </script>
+
+</head>
+<body ng-controller="customerTaskCtrl">
+    <div class="container ">
+        <div class="row">
+            @Html.Partial("_PartailMenu")
+            <div class="clear">&nbsp;</div>
+            <form name="myForm">
+                <b> {{action | uppercase}} </b>
+                <span> <b>Task</b></span>
+                <table class="table">
+
+                    <tr>
+                        <td>TaskName</td>
+                        <td>
+                            <input type="text" ng-model="New.TaskName" id="TaskName" name="TaskName" class="form-control" />
+                            <input type="hidden" ng-model="New.Id" id="Id" name="Id" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Customer</td>
+                        <td>
+                            <select ng-options="s.Id as s.Name for s in allModels" ng-model="New.CustomerId" class="form-control">
+                                <option value="">--Select--</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TaskDate</td>
+                        <td>
+                            <input type="date"
+                                   ng-model="New.TaskDate" name="TaskDate" class="form-control">
+
+                    </tr>
+                    <tr>
+                        <td>TaskStatus</td>
+                        <td>
+                            <select ng-options="s.TaskStatus as s.value for s in TaskStatuss" ng-model="New.TaskStatus" class="form-control">
+                                <option value="">--Select--</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input id="Submit1" class="btn btn-primary" ng-click="update()" type="submit" value="submit" /></td>
+                    </tr>
+
+                </table>
+            </form>
+            <div class="gridStyle table-responsive table table table-striped" ng-grid="gridOptions"></div>
+        </div>
+    </div>
+</body>
+</html>

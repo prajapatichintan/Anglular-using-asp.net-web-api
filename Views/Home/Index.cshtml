@@ -1,0 +1,68 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html ng-app="customersApp">  
+    <head lang="en">
+        <meta charset="utf-8">
+        <title>CRUD App using AngularJS</title>  
+        <link href="~/Content/css/ng-grid.min.css" rel="stylesheet" />
+        <link href="~/Content/css/style.css" rel="stylesheet" />
+        <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="~/Scripts/js/jquery-1.10.1.min.js"></script>
+        <script src="~/Scripts/js/angular.min.js"></script>
+        <script src="~/Scripts/js/ng-grid.min.js"></script>
+        <script src="~/Scripts/Common/common.js"></script>
+        <script src="~/Scripts/demo.js"></script>
+        <script src="~/Scripts/jquery.nimble.loader.js"></script>
+        <link href="~/Content/css/loader.css" rel="stylesheet" />
+        <script>
+           
+            $(document).ready(function () {
+                $('a.home').addClass('active');
+            })
+        </script>
+    </head>
+    <body ng-controller="customerCtrl" class="row">
+        <div class="container ">
+            <div class="row">
+                @Html.Partial("_PartailMenu")
+                    <form name="myForm">
+                        <b> {{action | uppercase}} </b>
+                        <span> <b>Customer Add and List</b></span>
+                        <table class="table">
+                            <tr>
+                                <td>Name</td>
+                                <td>
+                                    <input type="text" ng-model="New.Name" id="Name" name="Name" class="form-control" />
+                                    <input type="hidden" ng-model="New.Id" id="Id" name="Id" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>City</td>
+                                <td> <input type="text" ng-model="New.City" id="City" name="City" class="form-control" /></td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td> <input type="text" ng-model="New.Address" id="Address" name="Address" class="form-control" /></td>
+                            </tr>
+                            <tr>
+                                <td>State</td>
+                                <td> <input type="text" ng-model="New.State" id="State" name="State" class="form-control" /></td>
+                            </tr>
+                            <tr>
+                                <td>Country</td>
+                                <td> <input type="text" ng-model="New.Country" id="Country" name="Country" class="form-control" /></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><input id="Submit1" class="btn btn-primary" ng-click="update()" type="submit" value="submit" /></td>
+                            </tr>
+                        </table>
+                    </form>
+                    <div class="gridStyle table-responsive table table table-striped" ng-grid="gridOptions"></div>
+</div>
+
+        </div>
+</body>
+</html>
